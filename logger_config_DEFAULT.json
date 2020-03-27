@@ -2,13 +2,13 @@
   "version": 1,
   "loggers": {
     "eglogging": {
-      "level"   : "DEBUG",
+      "level"   : "INFO",
       "handlers": ["console_handler"]
     }
   },
   "handlers": {
     "console_handler": {
-      "level"    : "DEBUG",
+      "level"    : "INFO",
       "formatter": "logfmt",
       "class"    : "logging.StreamHandler"
     }
