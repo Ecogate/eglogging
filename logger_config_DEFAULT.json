@@ -19,5 +19,5 @@
       "datefmt": "%Y-%m-%d_%H:%M:%S"
     }
   },
-  "disable_existing_loggers": false
+  "disable_existing_loggers": true
 }

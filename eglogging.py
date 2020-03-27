@@ -55,6 +55,11 @@ class Eglogging(object):
   # make the logger variable static
   logger = None
 
+  # to be able to kill existing loggers BUT get a new, unique logger
+  # each time we load a new configuration, use this int to get a unique name
+  # each time we load a config
+  loggers_created = 0
+
 
   @staticmethod
   def load_config_from_file(filename):
@@ -65,8 +70,9 @@ class Eglogging(object):
 
     logging.config.dictConfig(config_dict)
 
-    # create a logger
-    Eglogging.logger = logging.getLogger(__name__)
+    # get a NEW logger
+    Eglogging.logger = logging.getLogger(__name__ + str(Eglogging.loggers_created))
+    Eglogging.loggers_created += 1
     return
 
 
