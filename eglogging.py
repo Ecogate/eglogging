@@ -24,15 +24,15 @@ def INFO(m):
   return
 
 def DEBUG(m):
-  Eglogging._log(logging.INFO, m)
+  Eglogging._log(logging.DEBUG, m)
   return
 
 def WARN(m):
-  Eglogging._log(logging.INFO, m)
+  Eglogging._log(logging.WARNING, m)
   return
 
 def ERROR(m):
-  Eglogging._log(logging.INFO, m)
+  Eglogging._log(logging.ERROR, m)
   return
 
 def CRITICAL(m):
