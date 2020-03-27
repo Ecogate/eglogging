@@ -4,13 +4,15 @@ import logging
 import logging.config
 import json
 import inspect
+import os
 
 # set what will get imported when someone writes "from eglogging import *"
 __all__ = ['MSG', 'INFO', 'DEBUG', 'WARN', 'ERROR', 'CRITICAL', 'LOG',
            'logging_load_config_from_file']
 
 DEFAULT_CONFIG_FILENAME = 'logger_config_DEFAULT.json'
-
+DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                   DEFAULT_CONFIG_FILENAME)
 
 # some shorthand accessors
 def MSG(m):
@@ -100,4 +102,4 @@ class Eglogging(object):
 
 
 ########################## INITIALIZE THE LOGGER ###############################
-Eglogging.load_config_from_file(DEFAULT_CONFIG_FILENAME)
+Eglogging.load_config_from_file(DEFAULT_CONFIG_PATH)
