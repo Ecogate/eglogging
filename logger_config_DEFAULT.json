@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "loggers": {
+    "": {
+      "level"   : "DEBUG",
+      "handlers": ["console_handler"]
+    }
+  },
+  "handlers": {
+    "console_handler": {
+      "level"    : "DEBUG",
+      "formatter": "logfmt",
+      "class"    : "logging.StreamHandler"
+    }
+  },
+  "formatters": {
+    "logfmt": {
+      "format" : "dt=%(asctime)s lvl=%(levelname)s msg=\"%(message)s\" line=%(line)s ",
+      "datefmt": "%Y-%m-%d_%H:%M:%S"
+    }
+  },
+  "disable_existing_loggers": false
+}
