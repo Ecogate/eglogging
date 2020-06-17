@@ -8,12 +8,15 @@ if __name__ == '__main__':
 
   try:
     #logging_load_config_from_file('logger_config_DEFAULT.json')
-    INFO('hello')
+    print("----------- Using the default, machine-friendly config ------------")
+    INFO('Hello')
     WARN("Winter is coming.")
 
-    DEBUG("Loading a more human-friendly config")
+    print("\n----------- Using a more human-friendly config --------------------")
     logging_load_config_from_file('logger_config_HUMAN.json')
-    ERROR("This isn't an error, but it should easier to read")
+    INFO("This should be easier to read.")
+    WARN("The night is dark and full of terror.")
+    ERROR("They were dead, but now they walk! It's the white walkers!")
 
   except Exception as ex:
     MSG("Exception: {}".format(ex))

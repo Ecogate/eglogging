@@ -49,12 +49,19 @@ def logging_load_config_from_file(filename):
 
 
 
+# colors
+GRAY        = "\x1b[38;21m"
+ORANGE      = "\x1b[33;1m"
+RED         = "\x1b[31;1m"
+COLOR_RESET = "\x1b[0m"
+
+
+
 class Eglogging(object):
   """wrapper around python's logging module"""
 
   # make the logger variable static
   logger = None
-
 
   @staticmethod
   def load_config_from_file(filename):
@@ -73,8 +80,22 @@ class Eglogging(object):
   @staticmethod
   def _log(level, m):
     # log message m at the info level
-    myfields = { 'line': Eglogging._line_info() }
+
+    # figure out the color based on the message level
+    color = ''
+    if level >= logging.ERROR:
+      color = RED
+    elif level >= logging.WARNING:
+      color = ORANGE
+    else:
+      color = GRAY
+
+    myfields = { 'line'       : Eglogging._line_info(),
+                 'color_code' : color,
+                 'color_reset': COLOR_RESET }
+
     Eglogging.logger.log(level, m, extra = myfields)
+
 
 
   @staticmethod

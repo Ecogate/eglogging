@@ -15,7 +15,7 @@
   },
   "formatters": {
     "human": {
-      "format" : "%(levelname)s %(message)s (%(line)s @ %(asctime)s)",
+      "format" : "%(color_code)s%(levelname)s %(message)s (%(line)s @ %(asctime)s)%(color_reset)s",
       "datefmt": "%H:%M:%S"
     }
   },
