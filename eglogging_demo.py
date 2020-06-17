@@ -18,6 +18,10 @@ if __name__ == '__main__':
     WARN("The night is dark and full of terror.")
     ERROR("They were dead, but now they walk! It's the white walkers!")
 
+    # shows how to override the default color
+    INFO("Arya's got this. See how I overwrote the default color?",
+         color = LOG_COLORS['GREEN'])
+
   except Exception as ex:
     MSG("Exception: {}".format(ex))
     traceback.print_exc()

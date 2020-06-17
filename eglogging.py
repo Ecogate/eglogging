@@ -7,40 +7,41 @@ import inspect
 import os
 
 # set what will get imported when someone writes "from eglogging import *"
-__all__ = ['MSG', 'INFO', 'DEBUG', 'WARN', 'ERROR', 'CRITICAL', 'LOG',
-           'logging_load_config_from_file']
+__all__ = [ 'MSG', 'INFO', 'DEBUG', 'WARN', 'ERROR', 'CRITICAL', 'LOG',
+            'logging_load_config_from_file',
+            'LOG_COLORS' ]
 
 DEFAULT_CONFIG_FILENAME = 'logger_config_DEFAULT.json'
 DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                    DEFAULT_CONFIG_FILENAME)
 
 # some shorthand accessors
-def MSG(m):
-  Eglogging._log(logging.INFO, m)
+def MSG(m, color = None):
+  Eglogging._log(logging.INFO, m, color = color)
   return
 
-def INFO(m):
-  Eglogging._log(logging.INFO, m)
+def INFO(m, color = None):
+  Eglogging._log(logging.INFO, m, color = color)
   return
 
-def DEBUG(m):
-  Eglogging._log(logging.DEBUG, m)
+def DEBUG(m, color = None):
+  Eglogging._log(logging.DEBUG, m, color = color)
   return
 
-def WARN(m):
-  Eglogging._log(logging.WARNING, m)
+def WARN(m, color = None):
+  Eglogging._log(logging.WARNING, m, color = color)
   return
 
-def ERROR(m):
-  Eglogging._log(logging.ERROR, m)
+def ERROR(m, color = None):
+  Eglogging._log(logging.ERROR, m, color = color)
   return
 
-def CRITICAL(m):
-  Eglogging._log(logging.CRITICAL, m)
+def CRITICAL(m, color = None):
+  Eglogging._log(logging.CRITICAL, m, color = color)
   return
 
-def LOG(m, level = logging.NOTSET):
-  Eglogging._log(level, m)
+def LOG(m, level = logging.NOTSET, color = None):
+  Eglogging._log(level, m, color)
   return
 
 def logging_load_config_from_file(filename):
@@ -50,10 +51,11 @@ def logging_load_config_from_file(filename):
 
 
 # colors
-GRAY        = "\x1b[38;21m"
-ORANGE      = "\x1b[33;1m"
-RED         = "\x1b[31;1m"
-COLOR_RESET = "\x1b[0m"
+LOG_COLORS = { 'GRAY'  : "\x1b[38;21m",
+               'GREEN' : "\x1b[1;32m",
+               'ORANGE': "\x1b[33;1m",
+               'RED'   : "\x1b[31;1m",
+               'RESET' : "\x1b[0m" }
 
 
 
@@ -78,21 +80,22 @@ class Eglogging(object):
 
 
   @staticmethod
-  def _log(level, m):
+  def _log(level, m, color = None):
     # log message m at the info level
 
-    # figure out the color based on the message level
-    color = ''
-    if level >= logging.ERROR:
-      color = RED
-    elif level >= logging.WARNING:
-      color = ORANGE
-    else:
-      color = GRAY
+    # if the user didn't specify a color,
+    # set it based on the message level
+    if color is None:
+      if level >= logging.ERROR:
+        color = LOG_COLORS['RED']
+      elif level >= logging.WARNING:
+        color = LOG_COLORS['ORANGE']
+      else:
+        color = LOG_COLORS['GRAY']
 
     myfields = { 'line'       : Eglogging._line_info(),
                  'color_code' : color,
-                 'color_reset': COLOR_RESET }
+                 'color_reset': LOG_COLORS['RESET'] }
 
     Eglogging.logger.log(level, m, extra = myfields)
 
