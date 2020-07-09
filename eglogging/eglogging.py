@@ -8,12 +8,12 @@ import os
 
 # set what will get imported when someone writes "from eglogging import *"
 __all__ = [ 'MSG', 'INFO', 'DEBUG', 'WARN', 'ERROR', 'CRITICAL', 'LOG',
-            'logging_load_config_from_file',
+            'logging_load_config_from_file', 'logging_load_human_config',
             'LOG_COLORS' ]
 
 DEFAULT_CONFIG_FILENAME = 'logger_config_DEFAULT.json'
-DEFAULT_CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                   DEFAULT_CONFIG_FILENAME)
+EGLOGGING_PATH          = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_CONFIG_PATH     = os.path.join(EGLOGGING_PATH, DEFAULT_CONFIG_FILENAME)
 
 # some shorthand accessors
 def MSG(m, color = None):
@@ -48,6 +48,11 @@ def logging_load_config_from_file(filename):
   Eglogging.load_config_from_file(filename)
   return
 
+def logging_load_human_config():
+  FN = os.path.join(EGLOGGING_PATH, 'logger_config_HUMAN.json')
+  Eglogging.load_config_from_file(FN)
+  return
+
 
 
 # colors
@@ -77,6 +82,7 @@ class Eglogging(object):
     # get the logger
     Eglogging.logger = logging.getLogger(__name__) # __name__ is eglogging
     return
+
 
 
   @staticmethod
