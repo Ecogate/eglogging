@@ -1,1 +1,2 @@
 include eglogging/VERSION
+include eglogging/*.json

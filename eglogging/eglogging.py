@@ -56,11 +56,23 @@ def logging_load_human_config():
 
 
 # colors
-LOG_COLORS = { 'GRAY'  : "\x1b[38;21m",
-               'GREEN' : "\x1b[1;32m",
-               'ORANGE': "\x1b[33;1m",
-               'RED'   : "\x1b[31;1m",
-               'RESET' : "\x1b[0m" }
+LOG_COLORS = { 'RESET'  : "\x1b[0m"   ,
+               'BLACK'  : "\x1b[30;1m",
+               'RED'    : "\x1b[31;1m",
+               'GREEN'  : "\x1b[32;1m",
+               'YELLOW' : "\x1b[33;1m",
+               'BLUE'   : "\x1b[34;1m",
+               'MAGENTA': "\x1b[35;1m",
+               'CYAN'   : "\x1b[36;1m",
+               'WHITE'  : "\x1b[38;21m",
+               'BLACK_BG'  : "\x1b[40;1m",
+               'RED_BG'    : "\x1b[41;1m",
+               'GREEN_BG'  : "\x1b[42;1m",
+               'YELLOW_BG' : "\x1b[43;1m",
+               'BLUE_BG'   : "\x1b[44;1m",
+               'MAGENTA_BG': "\x1b[45;1m",
+               'CYAN_BG'   : "\x1b[46;1m",
+               'WHITE_BG'  : "\x1b[47;21m" }
 
 
 
@@ -95,9 +107,9 @@ class Eglogging(object):
       if level >= logging.ERROR:
         color = LOG_COLORS['RED']
       elif level >= logging.WARNING:
-        color = LOG_COLORS['ORANGE']
+        color = LOG_COLORS['YELLOW']
       else:
-        color = LOG_COLORS['GRAY']
+        color = LOG_COLORS['WHITE']
 
     myfields = { 'line'       : Eglogging._line_info(),
                  'color_code' : color,

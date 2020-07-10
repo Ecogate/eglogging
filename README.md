@@ -28,7 +28,7 @@ INFO("Arya's got this. See how I overwrote the default color?",
      color = LOG_COLORS['GREEN'])
 ```
 
-The available colors are `GRAY`, `GREEN`, `ORANGE`, and `RED`.
+The available colors are `BLACK`, `RED`, `GREEN`, `YELLOW`, `BLUE`, `MAGENTA`, `CYAN`, `WHITE`, `BLACK_BG`, `RED_BG`, `GREEN_BG`, `YELLOW_BG`, `BLUE_BG`, `MAGENTA_BG`, `CYAN_BG`, and `WHITE_BG`.
 
 For more info on how to set up a custom formatter / configuration, look
-[here](https://docs.python.org/3.6/library/logging.config.html#logging-config-dictschema).
+[here](https://docs.python.org/3/library/logging.config.html#logging-config-dictschema).
