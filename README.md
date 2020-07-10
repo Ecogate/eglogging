@@ -3,6 +3,11 @@ Super-simple wrapper around python's logging library
 
 ![Eglogging Screenshot](screenshot.png)
 
+This package is [available on PyPI](https://pypi.org/project/eglogging/).
+Install it with
+
+    pip install eglogging
+
 To use it, import everything: `from eglogging import *`
 
 You can then log a message `m` using these functions,
@@ -19,7 +24,8 @@ where the output will be formatted to
 To load another configuration, just call `logging_load_config_from_file(fn)`,
 where `fn` is the path to a json file containing a valid configuration.
 
-A human-friendly configuration is provided in `logger_config_HUMAN.json`.
+A human-friendly configuration is provided in `logger_config_HUMAN.json`;
+you can load it with `logging_load_human_config()`.
 In this config, WARNINGs and higher-level messages will be colored by default.
 You can also set the color of any message manually by providing a color argument:
 
